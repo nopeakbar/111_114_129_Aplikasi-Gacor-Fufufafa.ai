@@ -4,7 +4,9 @@ import 'daftar_anggota_page.dart';
 import 'bantuan_page.dart';
 
 class MainNavigation extends StatefulWidget {
-  const MainNavigation({super.key});
+  final String username;
+
+  const MainNavigation({super.key, required this.username});
 
   @override
   State<MainNavigation> createState() => _MainNavigationState();
@@ -13,14 +15,6 @@ class MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
-  // Halaman yang akan ditampilkan berdasarkan pilihan
-  final List<Widget> _pages = [
-    const HomePage(),
-    const DaftarAnggotaPage(),
-    const BantuanPage(),
-  ];
-
-  // Fungsi untuk menangani saat item BottomNavigationBar dipilih
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -29,8 +23,14 @@ class _MainNavigationState extends State<MainNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> pages = [
+      HomePage(username: widget.username),
+      const DaftarAnggotaPage(),
+      const BantuanPage(),
+    ];
+
     return Scaffold(
-      body: _pages[_selectedIndex], // Halaman yang ditampilkan
+      body: pages[_selectedIndex],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           boxShadow: [
@@ -72,8 +72,7 @@ class _MainNavigationState extends State<MainNavigation> {
           ],
         ),
       ),
-      extendBody:
-          true, // Membuat agar body tidak tertutup oleh bottom navigation bar
+      extendBody: true, 
     );
   }
 }

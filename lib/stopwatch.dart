@@ -115,7 +115,7 @@ class _StopwatchPageState extends State<StopwatchPage> {
                   ElevatedButton(
                     onPressed: _stopwatch.isRunning ? null : _start,
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.orange, // teks warna oranye
+                      foregroundColor: Colors.orange, 
                     ),
                     child: const Text("Start"),
                   ),

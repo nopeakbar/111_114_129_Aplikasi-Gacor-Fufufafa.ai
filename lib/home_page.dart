@@ -7,7 +7,9 @@ import 'package:bikinaplikasi/login_page.dart';
 import 'package:bikinaplikasi/sistem_rekomendasi_page.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final String username;
+
+  const HomePage({super.key, required this.username});
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,15 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                'Selamat datang, $username!',
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 20),              const SizedBox(height: 20),
               _buildMenuButton(context, "Stopwatch", const StopwatchPage()),
               _buildMenuButton(
                 context,

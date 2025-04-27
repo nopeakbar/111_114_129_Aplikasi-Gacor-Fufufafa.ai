@@ -15,10 +15,10 @@ class LBSTrackingApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.black, // Latar belakang hitam
+        scaffoldBackgroundColor: Colors.black, 
         textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: Colors.white), // Warna teks putih
-          bodyMedium: TextStyle(color: Colors.white), // Warna teks putih
+          bodyLarge: TextStyle(color: Colors.white), 
+          bodyMedium: TextStyle(color: Colors.white), 
         ),
       ),
       home: const LokasiPenggunaScreen(),
@@ -54,7 +54,6 @@ class LokasiPenggunaScreenState extends State<LokasiPenggunaScreen> {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Periksa apakah layanan lokasi diaktifkan
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       setState(() {
@@ -63,7 +62,6 @@ class LokasiPenggunaScreenState extends State<LokasiPenggunaScreen> {
       return;
     }
 
-    // Periksa izin lokasi
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
@@ -105,20 +103,19 @@ class LokasiPenggunaScreenState extends State<LokasiPenggunaScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sistem Pelacakan Lokasi"),
-        backgroundColor: Colors.grey[900], // Warna AppBar gelap
+        backgroundColor: Colors.grey[900],
       ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
-            // Scroll bila layar tidak cukup
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(
                   Icons.location_on,
                   size: 100,
-                  color: Colors.redAccent, // Ikon lokasi dengan warna menarik
+                  color: Colors.redAccent, 
                 ),
                 const SizedBox(height: 20),
                 const Text(
@@ -137,7 +134,6 @@ class LokasiPenggunaScreenState extends State<LokasiPenggunaScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                // Tampilkan Map jika lokasi sudah tersedia
                 if (_currentPosition != null)
                   Container(
                     height: 300,

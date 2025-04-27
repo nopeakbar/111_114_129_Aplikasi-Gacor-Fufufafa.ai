@@ -12,17 +12,17 @@ class _LoginPageState extends State<LoginPage> {
   String username = "";
   String password = "";
 
-  // Add a map of valid username/password combinations
   final Map<String, String> validCredentials = {
     "fufufafa": "okegas",
     "wow": "wow",
-    "": "", // Keep the empty credentials for backwards compatibility
+    "": "",
+    "vino": "vino123",
   };
 
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: ThemeData.dark(), // biar background sama kayak Stopwatch
+      data: ThemeData.dark(), 
       child: SafeArea(
         child: Scaffold(
           body: Center(
@@ -110,12 +110,11 @@ class _LoginPageState extends State<LoginPage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
       onPressed: () {
-        // Check if the entered credentials are valid
         if (validCredentials.containsKey(username) &&
             validCredentials[username] == password) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const MainNavigation()),
+            MaterialPageRoute(builder: (context) => MainNavigation(username: username)),
           );
         } else {
           const text = "Login failed! Please check your username and password.";

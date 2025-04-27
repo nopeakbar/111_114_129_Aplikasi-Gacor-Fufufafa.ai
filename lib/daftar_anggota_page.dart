@@ -6,7 +6,6 @@ class DaftarAnggotaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Static list of members with image paths
     final List<Map<String, String>> anggota = [
       {
         "nama": "Abednego Baharaja Silalahi",
@@ -92,7 +91,6 @@ class DaftarAnggotaPage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  // Navigasi ke halaman DetailAnggotaPage ketika item diklik
                   Navigator.push(
                     context,
                     MaterialPageRoute(

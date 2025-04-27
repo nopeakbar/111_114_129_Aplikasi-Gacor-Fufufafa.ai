@@ -36,7 +36,6 @@ class _JenisBilanganPageState extends State<JenisBilanganPage> {
       return;
     }
 
-    // Allows only numbers, minus sign, and commas
     final validPattern = RegExp(r'^[-0-9,]+$');
 
     setState(() {
@@ -52,7 +51,6 @@ class _JenisBilanganPageState extends State<JenisBilanganPage> {
     final input = _controller.text;
     if (input.isEmpty || _errorMessage != null) return;
 
-    // Replace comma with period for parsing
     final normalizedInput = input.replaceAll(',', '.');
 
     setState(() {
@@ -113,11 +111,11 @@ class _JenisBilanganPageState extends State<JenisBilanganPage> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: ThemeData.dark(), // Apply dark theme
+      data: ThemeData.dark(),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Cek Jenis Bilangan'),
-          backgroundColor: Colors.grey[900], // consistent dark
+          backgroundColor: Colors.grey[900],
           foregroundColor: Colors.white,
           centerTitle: true,
         ),
@@ -159,7 +157,7 @@ class _JenisBilanganPageState extends State<JenisBilanganPage> {
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
-                  width: double.infinity, // Full width button
+                  width: double.infinity,
                   child: ElevatedButton(
                     onPressed: _errorMessage == null ? _cekBilangan : null,
                     style: ElevatedButton.styleFrom(

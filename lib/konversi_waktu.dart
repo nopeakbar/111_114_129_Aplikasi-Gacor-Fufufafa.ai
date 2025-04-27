@@ -17,7 +17,6 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
   String _lastModified = '';
   Timer? _debounceTimer;
 
-  // Error message state variables
   String? _tahunError;
   String? _jamError;
   String? _menitError;
@@ -40,17 +39,14 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
 
     final controller = _getControllerForField(field);
 
-    // Validate input - only allow numbers and commas
     final text = controller.text;
     final validPattern = RegExp(r'^[0-9,]+$');
 
-    // Clear error message if input is empty
     if (text.isEmpty) {
       _clearErrorForField(field);
       return;
     }
 
-    // Show error message if input contains invalid characters
     if (!validPattern.hasMatch(text)) {
       _setErrorForField(field, "Hanya masukkan angka dan koma");
       return;
@@ -130,10 +126,9 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
 
     double tahun, jam, menit, detik;
 
-    // Constants for conversion
-    const double jamPerTahun = 365 * 24; // 8760 hours in a year
-    const double menitPerJam = 60; // 60 minutes in an hour
-    const double detikPerMenit = 60; // 60 seconds in a minute
+    const double jamPerTahun = 365 * 24; // 8760 jam di 1 taun
+    const double menitPerJam = 60; // 60 menit di 1 jam
+    const double detikPerMenit = 60; // 60 detik di 1 menit
 
     switch (sourceField) {
       case 'tahun':
@@ -195,7 +190,7 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
       if (decimals.isEmpty) {
         return formattedInteger;
       } else {
-        return '$formattedInteger,$decimals'; // Using comma as decimal separator
+        return '$formattedInteger,$decimals'; 
       }
     } else {
       return formatter.format(value);

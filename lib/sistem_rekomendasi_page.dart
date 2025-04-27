@@ -93,7 +93,6 @@ class _SitusRekomendasiPageState extends State<SitusRekomendasiPage>
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Column(
         children: [
-          // Image section (full width)
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: SizedBox(
@@ -107,12 +106,10 @@ class _SitusRekomendasiPageState extends State<SitusRekomendasiPage>
             ),
           ),
 
-          // Content section
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                // Title and URL
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,7 +131,6 @@ class _SitusRekomendasiPageState extends State<SitusRekomendasiPage>
                   ),
                 ),
 
-                // Favorite button
                 IconButton(
                   icon: Icon(
                     situs['favorite'] ? Icons.favorite : Icons.favorite_border,
@@ -164,7 +160,6 @@ class _SitusRekomendasiPageState extends State<SitusRekomendasiPage>
 
   @override
   Widget build(BuildContext context) {
-    // Get favorited sites
     final List<Map<String, dynamic>> favoriteSites =
         situsList
             .asMap()
@@ -189,7 +184,6 @@ class _SitusRekomendasiPageState extends State<SitusRekomendasiPage>
       body: TabBarView(
         controller: _tabController,
         children: [
-          // All recommendations tab
           ListView.builder(
             itemCount: situsList.length,
             itemBuilder: (context, index) {
@@ -197,7 +191,6 @@ class _SitusRekomendasiPageState extends State<SitusRekomendasiPage>
             },
           ),
 
-          // Favorites tab
           favoriteSites.isEmpty
               ? const Center(
                 child: Text(

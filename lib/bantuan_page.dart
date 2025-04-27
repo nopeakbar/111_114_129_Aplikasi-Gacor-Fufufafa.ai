@@ -6,7 +6,6 @@ class BantuanPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List of help items
     final List<Map<String, String>> helpItems = [
       {
         "title": "Login",
@@ -56,12 +55,10 @@ class BantuanPage extends StatelessWidget {
           ),
           centerTitle: true,
           actions: [
-            // Adding logout button to the AppBar
             IconButton(
               icon: const Icon(Icons.logout, color: Colors.white),
               tooltip: 'Logout',
               onPressed: () {
-                // Logout: kembali ke login dan hapus session
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (_) => const LoginPage()),
